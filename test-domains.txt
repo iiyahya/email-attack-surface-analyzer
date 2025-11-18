@@ -1,0 +1,4 @@
+# Test domains for analysis
+google.com
+github.com
+microsoft.com

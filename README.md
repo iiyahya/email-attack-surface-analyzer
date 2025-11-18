@@ -1,32 +1,50 @@
-# Email Attack Surface Analyzer
+# Email Attack Surface Analyzer - Enterprise Edition
 
-A comprehensive Python tool for analyzing your organization's email security posture by enumerating domains, checking DNS security records (SPF, DKIM, DMARC), and identifying potential vulnerabilities.
+A comprehensive, enterprise-grade Python tool for analyzing your organization's email security posture. Features an interactive menu system, advanced subdomain enumeration, and multiple export formats including Excel and CSV.
 
 ## Features
 
-- **Domain & Subdomain Enumeration**: Automatically discover subdomains using multiple sources:
-  - Sublist3r (if installed)
-  - Amass (if installed)
-  - crt.sh (Certificate Transparency logs)
-  - DNS zone transfer attempts
-  - VirusTotal API (optional)
+### 🎯 Interactive Menu System (NEW!)
+- User-friendly command-line interface
+- Visual ASCII art banner
+- Step-by-step workflow guidance
+- Real-time configuration management
+- Progress tracking and status display
 
-- **DNS Email Security Analysis**: Extract and analyze:
-  - SPF (Sender Policy Framework) records
-  - DKIM (DomainKeys Identified Mail) selectors
-  - DMARC (Domain-based Message Authentication) policies
-  - MX (Mail Exchange) records
+### 🔍 Domain & Subdomain Enumeration
+Automatically discover subdomains using multiple sources:
+  - **Subfinder** (NEW!) - Fast and efficient subdomain discovery
+  - **Sublist3r** (if installed)
+  - **Amass** (if installed)
+  - **crt.sh** (Certificate Transparency logs)
+  - **DNS zone transfer** attempts
+  - **VirusTotal API** (optional)
 
-- **External Email Provider Detection**: Identify services like:
+### 🛡️ DNS Email Security Analysis
+Extract and analyze:
+  - **SPF** (Sender Policy Framework) records
+  - **DKIM** (DomainKeys Identified Mail) selectors
+  - **DMARC** (Domain-based Message Authentication) policies
+  - **MX** (Mail Exchange) records
+
+### 📧 External Email Provider Detection
+Identify services like:
   - Google Workspace
   - Microsoft 365
   - Zoho Mail
   - Proofpoint
   - Cloudflare Email
+  - And 7+ more providers
 
-- **Security Risk Assessment**: Detect misconfigurations and vulnerabilities
+### ⚠️ Security Risk Assessment
+Detect misconfigurations and vulnerabilities with severity levels
 
-- **Comprehensive Reporting**: Generate both Markdown and JSON reports
+### 📊 Comprehensive Reporting (ENHANCED!)
+Generate reports in multiple formats:
+  - **Excel (.xlsx)** - Multi-sheet workbooks with formatting (NEW!)
+  - **CSV** - Individual data tables for analysis (NEW!)
+  - **Markdown (.md)** - Human-readable reports
+  - **JSON** - Machine-readable structured data
 
 ## Installation
 
@@ -43,6 +61,14 @@ pip install -r requirements.txt
 ### Optional External Tools
 
 For enhanced subdomain enumeration, install:
+
+**Subfinder (Recommended):**
+```bash
+# Using Go
+go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest
+
+# Or download binary from: https://github.com/projectdiscovery/subfinder
+```
 
 **Sublist3r:**
 ```bash
@@ -64,7 +90,7 @@ brew install amass
 
 ## Configuration
 
-Create a `.env` file in the project root:
+Create a `.env` file in the project root (or copy `.env.example`):
 
 ```env
 # Optional: VirusTotal API Key for additional subdomain discovery
@@ -75,23 +101,49 @@ SUBLISTER_PATH=/path/to/Sublist3r/sublist3r.py
 
 # Optional: Path to Amass binary
 AMASS_PATH=amass
+
+# Optional: Path to Subfinder binary
+SUBFINDER_PATH=subfinder
+
+# Optional: DNS timeout in seconds (default: 5)
+DNS_TIMEOUT=5
+
+# Optional: DKIM selectors to check (comma-separated)
+DKIM_SELECTORS=default,google,k1,k2,selector1,selector2
 ```
 
 ## Usage
 
-### Basic Usage
+### Interactive Mode (NEW! Recommended)
+
+Launch the interactive menu for guided analysis:
+
+```bash
+python main_interactive.py
+```
+
+Features:
+- 🎯 User-friendly menu navigation
+- ⚙️ Real-time configuration management
+- 📊 Multiple export format options
+- 📈 Analysis progress tracking
+- 💡 Built-in help and documentation
+
+### Command-Line Mode (Classic)
+
+**Basic Usage:**
 
 ```bash
 python main.py example.com
 ```
 
-### Multiple Domains
+**Multiple Domains:**
 
 ```bash
 python main.py example.com example.org example.net
 ```
 
-### With Configuration File
+**With Configuration File:**
 
 Create a `domains.txt` file with one domain per line:
 ```
@@ -117,15 +169,29 @@ Options:
   -o, --output DIR     Output directory for reports (default: ./reports)
   -t, --timeout INT    DNS query timeout in seconds (default: 5)
   --no-enum            Skip subdomain enumeration
-  --skip-tools         Skip external tools (Sublist3r, Amass)
+  --skip-tools         Skip external tools (Sublist3r, Amass, Subfinder)
+  --export-excel       Export results to Excel format (.xlsx) (NEW!)
+  --export-csv         Export results to CSV format (NEW!)
   -v, --verbose        Enable verbose output
 ```
 
 ### Example Commands
 
 ```bash
+# Interactive mode (recommended for enterprise users)
+python main_interactive.py
+
 # Analyze a single domain with verbose output
 python main.py example.com -v
+
+# Analyze with Excel export (comprehensive reporting)
+python main.py example.com --export-excel
+
+# Analyze with CSV export (data analysis)
+python main.py example.com --export-csv
+
+# Analyze with both Excel and CSV
+python main.py example.com --export-excel --export-csv
 
 # Analyze multiple domains and save to custom directory
 python main.py example.com example.org -o /path/to/reports
@@ -133,15 +199,19 @@ python main.py example.com example.org -o /path/to/reports
 # Skip subdomain enumeration, only analyze root domains
 python main.py example.com --no-enum
 
-# Read domains from file
-python main.py -f domains.txt
+# Skip external tools for faster analysis
+python main.py example.com --skip-tools
+
+# Read domains from file with full analysis
+python main.py -f domains.txt --export-excel -v
 ```
 
-## Output
+## Output Formats
 
-The tool generates two types of output files in the reports directory:
+The tool generates multiple output formats in the reports directory:
 
-1. **report_TIMESTAMP.md**: Human-readable Markdown report with:
+### 1. Markdown Report (report_TIMESTAMP.md)
+Human-readable report with:
    - Executive summary
    - Domain and subdomain inventory
    - DNS security record analysis
@@ -149,7 +219,24 @@ The tool generates two types of output files in the reports directory:
    - Security findings and risk ratings
    - Recommendations
 
-2. **results_TIMESTAMP.json**: Machine-readable JSON with all collected data
+### 2. JSON Data (results_TIMESTAMP.json)
+Machine-readable JSON with all collected data
+
+### 3. Excel Workbook (analysis_TIMESTAMP.xlsx) - NEW!
+Multi-sheet Excel file with:
+   - **Executive Summary**: High-level overview and statistics
+   - **Domain Inventory**: All discovered domains
+   - **DNS Records**: SPF, DKIM, DMARC, MX records
+   - **Email Providers**: Detected services and configurations
+   - **Security Findings**: Issues with severity levels (color-coded)
+   - **Detailed Data**: Complete raw data dump
+
+### 4. CSV Files (csv_TIMESTAMP/) - NEW!
+Directory containing multiple CSV files:
+   - `domains.csv`: Domain inventory
+   - `dns_records.csv`: DNS security records
+   - `providers.csv`: Email provider information
+   - `findings.csv`: Security issues and recommendations
 
 ## Report Sections
 

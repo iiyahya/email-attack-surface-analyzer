@@ -44,16 +44,17 @@ class SubdomainEnumerator:
     
     def enumerate_all(self, domain: str, use_external_tools: bool = True,
                      virustotal_api_key: str = None, sublister_path: str = None,
-                     amass_path: str = None) -> Set[str]:
+                     amass_path: str = None, subfinder_path: str = None) -> Set[str]:
         """
         Enumerate subdomains using all available methods.
         
         Args:
             domain: Root domain to enumerate
-            use_external_tools: Whether to use Sublist3r and Amass
+            use_external_tools: Whether to use external tools
             virustotal_api_key: VirusTotal API key (optional)
             sublister_path: Path to Sublist3r script (optional)
             amass_path: Path to Amass binary (optional)
+            subfinder_path: Path to Subfinder binary (optional)
         
         Returns:
             Set of discovered subdomains
@@ -109,6 +110,15 @@ class SubdomainEnumerator:
                 subdomains.update(amass_results)
                 if self.verbose:
                     print(f"      Found {len(amass_results)} subdomains from Amass")
+            
+            # Subfinder
+            if subfinder_path:
+                if self.verbose:
+                    print(f"  [*] Running Subfinder for {domain}...")
+                subfinder_results = self._run_subfinder(domain, subfinder_path)
+                subdomains.update(subfinder_results)
+                if self.verbose:
+                    print(f"      Found {len(subfinder_results)} subdomains from Subfinder")
         
         # Clean and validate results
         cleaned_subdomains = self._clean_subdomains(subdomains, domain)
@@ -327,6 +337,48 @@ class SubdomainEnumerator:
         
         return subdomains
     
+    def _run_subfinder(self, domain: str, subfinder_path: str) -> Set[str]:
+        """
+        Run Subfinder to enumerate subdomains.
+        
+        Args:
+            domain: Domain to enumerate
+            subfinder_path: Path to subfinder binary
+        
+        Returns:
+            Set of discovered subdomains
+        """
+        subdomains = set()
+        
+        try:
+            # Run Subfinder with silent mode
+            cmd = [subfinder_path, '-d', domain, '-silent', '-all']
+            
+            result = subprocess.run(
+                cmd,
+                capture_output=True,
+                text=True,
+                timeout=180  # 3 minute timeout
+            )
+            
+            # Parse output - Subfinder outputs one subdomain per line
+            for line in result.stdout.split('\n'):
+                subdomain = line.strip().lower()
+                if subdomain and domain in subdomain:
+                    subdomains.add(subdomain)
+        
+        except subprocess.TimeoutExpired:
+            if self.verbose:
+                print(f"      Subfinder timed out")
+        except FileNotFoundError:
+            if self.verbose:
+                print(f"      Subfinder not found at: {subfinder_path}")
+        except Exception as e:
+            if self.verbose:
+                print(f"      Error running Subfinder: {e}")
+        
+        return subdomains
+    
     def _clean_subdomains(self, subdomains: Set[str], root_domain: str) -> Set[str]:
         """
         Clean and validate subdomain list.
@@ -365,7 +417,7 @@ class SubdomainEnumerator:
 
 def enum_domains(domains: List[str], timeout: int = 5, verbose: bool = False,
                 use_external_tools: bool = True, virustotal_api_key: str = None,
-                sublister_path: str = None, amass_path: str = None) -> dict:
+                sublister_path: str = None, amass_path: str = None, subfinder_path: str = None) -> dict:
     """
     Enumerate subdomains for a list of root domains.
     
@@ -373,10 +425,11 @@ def enum_domains(domains: List[str], timeout: int = 5, verbose: bool = False,
         domains: List of root domains to enumerate
         timeout: Timeout in seconds for requests
         verbose: Enable verbose output
-        use_external_tools: Whether to use Sublist3r and Amass
+        use_external_tools: Whether to use external enumeration tools
         virustotal_api_key: VirusTotal API key (optional)
         sublister_path: Path to Sublist3r script (optional)
         amass_path: Path to Amass binary (optional)
+        subfinder_path: Path to Subfinder binary (optional)
     
     Returns:
         Dictionary mapping each root domain to its discovered subdomains
@@ -393,7 +446,8 @@ def enum_domains(domains: List[str], timeout: int = 5, verbose: bool = False,
             use_external_tools=use_external_tools,
             virustotal_api_key=virustotal_api_key,
             sublister_path=sublister_path,
-            amass_path=amass_path
+            amass_path=amass_path,
+            subfinder_path=subfinder_path
         )
         
         results[domain] = sorted(list(subdomains))

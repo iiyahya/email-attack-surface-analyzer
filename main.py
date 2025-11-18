@@ -150,7 +150,8 @@ class EmailAttackSurfaceAnalyzer:
             use_external_tools=not self.args.skip_tools,
             virustotal_api_key=self.config['virustotal_api_key'],
             sublister_path=self.config['sublister_path'],
-            amass_path=self.config['amass_path']
+            amass_path=self.config['amass_path'],
+            subfinder_path=self.config['subfinder_path']
         )
         
         # Store results and build all_domains list
@@ -235,6 +236,22 @@ class EmailAttackSurfaceAnalyzer:
         self.print_success(f"\n✓ Reports generated:")
         self.print_info(f"  Markdown: {report_files['markdown']}")
         self.print_info(f"  JSON: {report_files['json']}")
+        
+        # Generate Excel export if requested
+        if self.args.export_excel:
+            from excel_exporter import export_to_excel
+            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+            excel_file = os.path.join(output_dir, f"analysis_{timestamp}.xlsx")
+            export_to_excel(self.results, excel_file, verbose=self.verbose)
+            self.print_info(f"  Excel: {excel_file}")
+        
+        # Generate CSV export if requested
+        if self.args.export_csv:
+            from excel_exporter import export_to_csv
+            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+            csv_dir = os.path.join(output_dir, f"csv_{timestamp}")
+            export_to_csv(self.results, csv_dir, verbose=self.verbose)
+            self.print_info(f"  CSV: {csv_dir}")
     
     def print_summary(self):
         """Print analysis summary."""
@@ -383,7 +400,19 @@ Examples:
     parser.add_argument(
         '--skip-tools',
         action='store_true',
-        help='Skip external tools (Sublist3r, Amass)'
+        help='Skip external tools (Sublist3r, Amass, Subfinder)'
+    )
+    
+    parser.add_argument(
+        '--export-excel',
+        action='store_true',
+        help='Export results to Excel format (.xlsx)'
+    )
+    
+    parser.add_argument(
+        '--export-csv',
+        action='store_true',
+        help='Export results to CSV format'
     )
     
     parser.add_argument(
