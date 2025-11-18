@@ -60,6 +60,7 @@ class EmailAttackSurfaceAnalyzer:
             'virustotal_api_key': os.getenv('VIRUSTOTAL_API_KEY'),
             'sublister_path': os.getenv('SUBLISTER_PATH'),
             'amass_path': os.getenv('AMASS_PATH', 'amass'),
+            'subfinder_path': os.getenv('SUBFINDER_PATH', 'subfinder'),
             'dns_timeout': int(os.getenv('DNS_TIMEOUT', args.timeout)),
             'dkim_selectors': os.getenv('DKIM_SELECTORS', 
                 'default,google,k1,k2,k3,selector1,selector2,dkim,mail,email,mx').split(',')
