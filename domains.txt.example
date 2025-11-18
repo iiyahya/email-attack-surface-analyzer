@@ -1,0 +1,7 @@
+# Example domains file
+# One domain per line
+# Lines starting with # are comments
+
+example.com
+example.org
+example.net
