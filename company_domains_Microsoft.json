@@ -1,0 +1,679 @@
+{
+  "company_name": "Microsoft",
+  "total_domains": 81,
+  "discovery_timestamp": "2025-11-19 09:25:33",
+  "categories": {
+    "primary_domains": [
+      {
+        "domain": "microsoft.ai",
+        "sources": [
+          "TLD Variation (.ai)"
+        ],
+        "discovery_methods": 1
+      },
+      {
+        "domain": "microsoft.app",
+        "sources": [
+          "TLD Variation (.app)"
+        ],
+        "discovery_methods": 1
+      },
+      {
+        "domain": "microsoft.biz",
+        "sources": [
+          "TLD Variation (.biz)"
+        ],
+        "discovery_methods": 1
+      },
+      {
+        "domain": "microsoft.ca",
+        "sources": [
+          "TLD Variation (.ca)"
+        ],
+        "discovery_methods": 1
+      },
+      {
+        "domain": "microsoft.cn",
+        "sources": [
+          "TLD Variation (.cn)"
+        ],
+        "discovery_methods": 1
+      },
+      {
+        "domain": "microsoft.co",
+        "sources": [
+          "TLD Variation (.co)"
+        ],
+        "discovery_methods": 1
+      },
+      {
+        "domain": "microsoft.com",
+        "sources": [
+          "Common Pattern",
+          "TLD Variation (.com)"
+        ],
+        "discovery_methods": 2
+      },
+      {
+        "domain": "microsoft.de",
+        "sources": [
+          "TLD Variation (.de)"
+        ],
+        "discovery_methods": 1
+      },
+      {
+        "domain": "microsoft.fr",
+        "sources": [
+          "TLD Variation (.fr)"
+        ],
+        "discovery_methods": 1
+      },
+      {
+        "domain": "microsoft.in",
+        "sources": [
+          "TLD Variation (.in)"
+        ],
+        "discovery_methods": 1
+      },
+      {
+        "domain": "microsoft.info",
+        "sources": [
+          "TLD Variation (.info)"
+        ],
+        "discovery_methods": 1
+      },
+      {
+        "domain": "microsoft.io",
+        "sources": [
+          "TLD Variation (.io)"
+        ],
+        "discovery_methods": 1
+      },
+      {
+        "domain": "microsoft.jp",
+        "sources": [
+          "TLD Variation (.jp)"
+        ],
+        "discovery_methods": 1
+      },
+      {
+        "domain": "microsoft.net",
+        "sources": [
+          "Common Pattern",
+          "TLD Variation (.net)"
+        ],
+        "discovery_methods": 2
+      },
+      {
+        "domain": "microsoft.org",
+        "sources": [
+          "Common Pattern",
+          "TLD Variation (.org)"
+        ],
+        "discovery_methods": 2
+      },
+      {
+        "domain": "microsoft.ru",
+        "sources": [
+          "TLD Variation (.ru)"
+        ],
+        "discovery_methods": 1
+      }
+    ],
+    "regional_domains": [
+      {
+        "domain": "asia.microsoft.com",
+        "sources": [
+          "Regional (asia)"
+        ],
+        "discovery_methods": 1
+      },
+      {
+        "domain": "eu.microsoft.com",
+        "sources": [
+          "Regional (eu)"
+        ],
+        "discovery_methods": 1
+      },
+      {
+        "domain": "microsoft-international.com",
+        "sources": [
+          "Regional (international)"
+        ],
+        "discovery_methods": 1
+      },
+      {
+        "domain": "microsoft-uk.com",
+        "sources": [
+          "Regional (uk)"
+        ],
+        "discovery_methods": 1
+      },
+      {
+        "domain": "microsoft-us.com",
+        "sources": [
+          "Regional (us)"
+        ],
+        "discovery_methods": 1
+      },
+      {
+        "domain": "microsoft.asia",
+        "sources": [
+          "Regional (asia)"
+        ],
+        "discovery_methods": 1
+      },
+      {
+        "domain": "microsoft.eu",
+        "sources": [
+          "TLD Variation (.eu)",
+          "Regional (eu)"
+        ],
+        "discovery_methods": 2
+      },
+      {
+        "domain": "microsoft.uk",
+        "sources": [
+          "TLD Variation (.uk)",
+          "Regional (uk)"
+        ],
+        "discovery_methods": 2
+      }
+    ],
+    "subsidiary_domains": [
+      {
+        "domain": "cloud.microsoft.com",
+        "sources": [
+          "Subsidiary Pattern (cloud)"
+        ],
+        "discovery_methods": 1
+      },
+      {
+        "domain": "entertainment.microsoft.com",
+        "sources": [
+          "Subsidiary Pattern (entertainment)"
+        ],
+        "discovery_methods": 1
+      },
+      {
+        "domain": "games.microsoft.com",
+        "sources": [
+          "Subsidiary Pattern (games)"
+        ],
+        "discovery_methods": 1
+      },
+      {
+        "domain": "labs.microsoft.com",
+        "sources": [
+          "Subsidiary Pattern (labs)"
+        ],
+        "discovery_methods": 1
+      },
+      {
+        "domain": "media.microsoft.com",
+        "sources": [
+          "Subsidiary Pattern (media)"
+        ],
+        "discovery_methods": 1
+      },
+      {
+        "domain": "microsoft-capital.com",
+        "sources": [
+          "Subsidiary Pattern (capital)"
+        ],
+        "discovery_methods": 1
+      },
+      {
+        "domain": "microsoft-cloud.com",
+        "sources": [
+          "Subsidiary Pattern (cloud)"
+        ],
+        "discovery_methods": 1
+      },
+      {
+        "domain": "microsoft-consulting.com",
+        "sources": [
+          "Subsidiary Pattern (consulting)"
+        ],
+        "discovery_methods": 1
+      },
+      {
+        "domain": "microsoft-games.com",
+        "sources": [
+          "Subsidiary Pattern (games)"
+        ],
+        "discovery_methods": 1
+      },
+      {
+        "domain": "microsoft-labs.com",
+        "sources": [
+          "Subsidiary Pattern (labs)"
+        ],
+        "discovery_methods": 1
+      },
+      {
+        "domain": "microsoft-network.com",
+        "sources": [
+          "Subsidiary Pattern (network)"
+        ],
+        "discovery_methods": 1
+      },
+      {
+        "domain": "microsoft-security.com",
+        "sources": [
+          "Subsidiary Pattern (security)"
+        ],
+        "discovery_methods": 1
+      },
+      {
+        "domain": "microsoft-services.com",
+        "sources": [
+          "Subsidiary Pattern (services)"
+        ],
+        "discovery_methods": 1
+      },
+      {
+        "domain": "microsoft-software.com",
+        "sources": [
+          "Subsidiary Pattern (software)"
+        ],
+        "discovery_methods": 1
+      },
+      {
+        "domain": "microsoft-solutions.com",
+        "sources": [
+          "Subsidiary Pattern (solutions)"
+        ],
+        "discovery_methods": 1
+      },
+      {
+        "domain": "microsoft-tech.com",
+        "sources": [
+          "Subsidiary Pattern (tech)"
+        ],
+        "discovery_methods": 1
+      },
+      {
+        "domain": "microsoft-technologies.com",
+        "sources": [
+          "Subsidiary Pattern (technologies)"
+        ],
+        "discovery_methods": 1
+      },
+      {
+        "domain": "microsoft-ventures.com",
+        "sources": [
+          "Subsidiary Pattern (ventures)"
+        ],
+        "discovery_methods": 1
+      },
+      {
+        "domain": "microsoftcloud.com",
+        "sources": [
+          "Subsidiary Pattern (cloud)"
+        ],
+        "discovery_methods": 1
+      },
+      {
+        "domain": "microsoftconsulting.com",
+        "sources": [
+          "Subsidiary Pattern (consulting)"
+        ],
+        "discovery_methods": 1
+      },
+      {
+        "domain": "microsoftdigital.com",
+        "sources": [
+          "Subsidiary Pattern (digital)"
+        ],
+        "discovery_methods": 1
+      },
+      {
+        "domain": "microsoftgames.com",
+        "sources": [
+          "Subsidiary Pattern (games)"
+        ],
+        "discovery_methods": 1
+      },
+      {
+        "domain": "microsoftgaming.com",
+        "sources": [
+          "Subsidiary Pattern (gaming)"
+        ],
+        "discovery_methods": 1
+      },
+      {
+        "domain": "microsoftlabs.com",
+        "sources": [
+          "Subsidiary Pattern (labs)"
+        ],
+        "discovery_methods": 1
+      },
+      {
+        "domain": "microsoftmedia.com",
+        "sources": [
+          "Subsidiary Pattern (media)"
+        ],
+        "discovery_methods": 1
+      },
+      {
+        "domain": "microsoftnetworks.com",
+        "sources": [
+          "Subsidiary Pattern (networks)"
+        ],
+        "discovery_methods": 1
+      },
+      {
+        "domain": "microsoftpartners.com",
+        "sources": [
+          "Subsidiary Pattern (partners)"
+        ],
+        "discovery_methods": 1
+      },
+      {
+        "domain": "microsoftsecurity.com",
+        "sources": [
+          "Subsidiary Pattern (security)"
+        ],
+        "discovery_methods": 1
+      },
+      {
+        "domain": "microsoftservices.com",
+        "sources": [
+          "Subsidiary Pattern (services)"
+        ],
+        "discovery_methods": 1
+      },
+      {
+        "domain": "microsoftsoftware.com",
+        "sources": [
+          "Subsidiary Pattern (software)"
+        ],
+        "discovery_methods": 1
+      },
+      {
+        "domain": "microsoftsolutions.com",
+        "sources": [
+          "Subsidiary Pattern (solutions)"
+        ],
+        "discovery_methods": 1
+      },
+      {
+        "domain": "microsoftstudio.com",
+        "sources": [
+          "Subsidiary Pattern (studio)"
+        ],
+        "discovery_methods": 1
+      },
+      {
+        "domain": "microsoftstudios.com",
+        "sources": [
+          "Subsidiary Pattern (studios)"
+        ],
+        "discovery_methods": 1
+      },
+      {
+        "domain": "microsofttech.com",
+        "sources": [
+          "Subsidiary Pattern (tech)"
+        ],
+        "discovery_methods": 1
+      },
+      {
+        "domain": "microsofttechnologies.com",
+        "sources": [
+          "Subsidiary Pattern (technologies)"
+        ],
+        "discovery_methods": 1
+      },
+      {
+        "domain": "microsoftventures.com",
+        "sources": [
+          "Subsidiary Pattern (ventures)"
+        ],
+        "discovery_methods": 1
+      },
+      {
+        "domain": "partners.microsoft.com",
+        "sources": [
+          "Subsidiary Pattern (partners)"
+        ],
+        "discovery_methods": 1
+      },
+      {
+        "domain": "security.microsoft.com",
+        "sources": [
+          "Subsidiary Pattern (security)"
+        ],
+        "discovery_methods": 1
+      },
+      {
+        "domain": "services.microsoft.com",
+        "sources": [
+          "Subsidiary Pattern (services)"
+        ],
+        "discovery_methods": 1
+      },
+      {
+        "domain": "solutions.microsoft.com",
+        "sources": [
+          "Subsidiary Pattern (solutions)"
+        ],
+        "discovery_methods": 1
+      },
+      {
+        "domain": "studios.microsoft.com",
+        "sources": [
+          "Subsidiary Pattern (studios)"
+        ],
+        "discovery_methods": 1
+      },
+      {
+        "domain": "tech.microsoft.com",
+        "sources": [
+          "Subsidiary Pattern (tech)"
+        ],
+        "discovery_methods": 1
+      }
+    ],
+    "subdomains": [
+      {
+        "domain": "microsoft.co.jp",
+        "sources": [
+          "TLD Variation (.co.jp)"
+        ],
+        "discovery_methods": 1
+      },
+      {
+        "domain": "microsoft.co.uk",
+        "sources": [
+          "TLD Variation (.co.uk)"
+        ],
+        "discovery_methods": 1
+      },
+      {
+        "domain": "microsoft.com.br",
+        "sources": [
+          "TLD Variation (.com.br)"
+        ],
+        "discovery_methods": 1
+      },
+      {
+        "domain": "microsoft.com.cn",
+        "sources": [
+          "TLD Variation (.com.cn)"
+        ],
+        "discovery_methods": 1
+      },
+      {
+        "domain": "microsoft.com.mx",
+        "sources": [
+          "TLD Variation (.com.mx)"
+        ],
+        "discovery_methods": 1
+      },
+      {
+        "domain": "microsoft.com.sa",
+        "sources": [
+          "TLD Variation (.com.sa)"
+        ],
+        "discovery_methods": 1
+      },
+      {
+        "domain": "microsoft.com.sg",
+        "sources": [
+          "TLD Variation (.com.sg)"
+        ],
+        "discovery_methods": 1
+      },
+      {
+        "domain": "www.microsoft.com",
+        "sources": [
+          "Common Pattern"
+        ],
+        "discovery_methods": 1
+      }
+    ],
+    "other_domains": [
+      {
+        "domain": "getmicrosoft.com",
+        "sources": [
+          "Common Pattern"
+        ],
+        "discovery_methods": 1
+      },
+      {
+        "domain": "microsoftapp.com",
+        "sources": [
+          "Common Pattern"
+        ],
+        "discovery_methods": 1
+      },
+      {
+        "domain": "microsoftcorp.com",
+        "sources": [
+          "Common Pattern"
+        ],
+        "discovery_methods": 1
+      },
+      {
+        "domain": "microsoftgroup.com",
+        "sources": [
+          "Common Pattern"
+        ],
+        "discovery_methods": 1
+      },
+      {
+        "domain": "microsoftinternational.com",
+        "sources": [
+          "Common Pattern"
+        ],
+        "discovery_methods": 1
+      },
+      {
+        "domain": "microsoftonline.com",
+        "sources": [
+          "Common Pattern"
+        ],
+        "discovery_methods": 1
+      },
+      {
+        "domain": "mymicrosoft.com",
+        "sources": [
+          "Common Pattern"
+        ],
+        "discovery_methods": 1
+      }
+    ]
+  },
+  "all_domains": [
+    "asia.microsoft.com",
+    "cloud.microsoft.com",
+    "entertainment.microsoft.com",
+    "eu.microsoft.com",
+    "games.microsoft.com",
+    "getmicrosoft.com",
+    "labs.microsoft.com",
+    "media.microsoft.com",
+    "microsoft-capital.com",
+    "microsoft-cloud.com",
+    "microsoft-consulting.com",
+    "microsoft-games.com",
+    "microsoft-international.com",
+    "microsoft-labs.com",
+    "microsoft-network.com",
+    "microsoft-security.com",
+    "microsoft-services.com",
+    "microsoft-software.com",
+    "microsoft-solutions.com",
+    "microsoft-tech.com",
+    "microsoft-technologies.com",
+    "microsoft-uk.com",
+    "microsoft-us.com",
+    "microsoft-ventures.com",
+    "microsoft.ai",
+    "microsoft.app",
+    "microsoft.asia",
+    "microsoft.biz",
+    "microsoft.ca",
+    "microsoft.cn",
+    "microsoft.co",
+    "microsoft.co.jp",
+    "microsoft.co.uk",
+    "microsoft.com",
+    "microsoft.com.br",
+    "microsoft.com.cn",
+    "microsoft.com.mx",
+    "microsoft.com.sa",
+    "microsoft.com.sg",
+    "microsoft.de",
+    "microsoft.eu",
+    "microsoft.fr",
+    "microsoft.in",
+    "microsoft.info",
+    "microsoft.io",
+    "microsoft.jp",
+    "microsoft.net",
+    "microsoft.org",
+    "microsoft.ru",
+    "microsoft.uk",
+    "microsoftapp.com",
+    "microsoftcloud.com",
+    "microsoftconsulting.com",
+    "microsoftcorp.com",
+    "microsoftdigital.com",
+    "microsoftgames.com",
+    "microsoftgaming.com",
+    "microsoftgroup.com",
+    "microsoftinternational.com",
+    "microsoftlabs.com",
+    "microsoftmedia.com",
+    "microsoftnetworks.com",
+    "microsoftonline.com",
+    "microsoftpartners.com",
+    "microsoftsecurity.com",
+    "microsoftservices.com",
+    "microsoftsoftware.com",
+    "microsoftsolutions.com",
+    "microsoftstudio.com",
+    "microsoftstudios.com",
+    "microsofttech.com",
+    "microsofttechnologies.com",
+    "microsoftventures.com",
+    "mymicrosoft.com",
+    "partners.microsoft.com",
+    "security.microsoft.com",
+    "services.microsoft.com",
+    "solutions.microsoft.com",
+    "studios.microsoft.com",
+    "tech.microsoft.com",
+    "www.microsoft.com"
+  ],
+  "summary": {
+    "primary": 16,
+    "regional": 8,
+    "subsidiaries": 42,
+    "subdomains": 8,
+    "other": 7
+  }
+}

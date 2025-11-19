@@ -23,6 +23,7 @@ from dns_analyzer import get_dns_records
 from provider_detector import detect_email_providers
 from report_generator import generate_report
 from excel_exporter import export_to_excel, export_to_csv
+from company_domains import discover_company_domains, format_results_table
 
 # Initialize colorama
 init(autoreset=True)
@@ -62,16 +63,18 @@ class InteractiveAnalyzer:
             elif choice == '2':
                 self.load_domains()
             elif choice == '3':
-                self.configure_settings()
+                self.discover_company_domains()
             elif choice == '4':
-                self.run_analysis()
+                self.configure_settings()
             elif choice == '5':
-                self.export_results()
+                self.run_analysis()
             elif choice == '6':
-                self.view_last_results()
+                self.export_results()
             elif choice == '7':
+                self.view_last_results()
+            elif choice == '8':
                 self.display_help()
-            elif choice == '8' or choice.lower() == 'q':
+            elif choice == '9' or choice.lower() == 'q':
                 print(f"\n{Fore.GREEN}Thank you for using Email Attack Surface Analyzer!{Style.RESET_ALL}\n")
                 break
             else:
@@ -89,12 +92,13 @@ class InteractiveAnalyzer:
         
         print(f"  {Fore.YELLOW}1.{Style.RESET_ALL} Quick Scan (Enter domains and scan)")
         print(f"  {Fore.YELLOW}2.{Style.RESET_ALL} Load Domains from File")
-        print(f"  {Fore.YELLOW}3.{Style.RESET_ALL} Configure Settings")
-        print(f"  {Fore.YELLOW}4.{Style.RESET_ALL} Run Full Analysis")
-        print(f"  {Fore.YELLOW}5.{Style.RESET_ALL} Export Results")
-        print(f"  {Fore.YELLOW}6.{Style.RESET_ALL} View Last Results Summary")
-        print(f"  {Fore.YELLOW}7.{Style.RESET_ALL} Help & Documentation")
-        print(f"  {Fore.YELLOW}8.{Style.RESET_ALL} Exit (Q)")
+        print(f"  {Fore.YELLOW}3.{Style.RESET_ALL} Discover Company Domains (NEW!)")
+        print(f"  {Fore.YELLOW}4.{Style.RESET_ALL} Configure Settings")
+        print(f"  {Fore.YELLOW}5.{Style.RESET_ALL} Run Full Analysis")
+        print(f"  {Fore.YELLOW}6.{Style.RESET_ALL} Export Results")
+        print(f"  {Fore.YELLOW}7.{Style.RESET_ALL} View Last Results Summary")
+        print(f"  {Fore.YELLOW}8.{Style.RESET_ALL} Help & Documentation")
+        print(f"  {Fore.YELLOW}9.{Style.RESET_ALL} Exit (Q)")
         
         print(f"\n{Fore.CYAN}{'='*70}{Style.RESET_ALL}")
         
@@ -183,6 +187,70 @@ class InteractiveAnalyzer:
             
         except Exception as e:
             print(f"\n{Fore.RED}✗ Error reading file: {e}{Style.RESET_ALL}")
+        
+        input("\nPress Enter to continue...")
+    
+    def discover_company_domains(self):
+        """Discover all domains associated with a company."""
+        self.clear_screen()
+        print(f"\n{Fore.CYAN}{'='*70}")
+        print(f"  COMPANY DOMAIN DISCOVERY")
+        print(f"{'='*70}{Style.RESET_ALL}\n")
+        
+        print("This feature discovers all domains associated with a company name,")
+        print("including primary domains, subsidiaries, regional variations, and more.\n")
+        
+        company_name = input(f"{Fore.CYAN}Enter company name: {Style.RESET_ALL}").strip()
+        
+        if not company_name:
+            print(f"\n{Fore.RED}✗ No company name entered.{Style.RESET_ALL}")
+            input("Press Enter to continue...")
+            return
+        
+        print(f"\n{Fore.YELLOW}[*] Starting discovery for: {company_name}{Style.RESET_ALL}")
+        print(f"{Fore.YELLOW}[*] This may take a few minutes...{Style.RESET_ALL}\n")
+        
+        try:
+            # Discover domains
+            results = discover_company_domains(company_name, verbose=True)
+            
+            # Display results
+            self.clear_screen()
+            print(format_results_table(results))
+            
+            # Ask if user wants to analyze these domains
+            analyze = input(f"\n{Fore.CYAN}Would you like to analyze these domains for email security? (Y/n): {Style.RESET_ALL}").strip().lower()
+            
+            if analyze != 'n':
+                # Load discovered domains
+                self.domains = results['all_domains']
+                print(f"\n{Fore.GREEN}✓ Loaded {len(self.domains)} domain(s) for analysis{Style.RESET_ALL}")
+                
+                # Ask if they want to run analysis now
+                run_now = input(f"\n{Fore.CYAN}Run analysis now? (Y/n): {Style.RESET_ALL}").strip().lower()
+                if run_now != 'n':
+                    self.run_analysis()
+                    return
+            
+            # Ask if they want to save results
+            save = input(f"\n{Fore.CYAN}Save discovery results to JSON? (Y/n): {Style.RESET_ALL}").strip().lower()
+            
+            if save != 'n':
+                timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+                output_dir = './reports'
+                os.makedirs(output_dir, exist_ok=True)
+                
+                filename = f"{output_dir}/company_discovery_{company_name.replace(' ', '_')}_{timestamp}.json"
+                with open(filename, 'w') as f:
+                    json.dump(results, f, indent=2)
+                
+                print(f"\n{Fore.GREEN}✓ Results saved to: {filename}{Style.RESET_ALL}")
+            
+        except Exception as e:
+            print(f"\n{Fore.RED}✗ Discovery failed: {e}{Style.RESET_ALL}")
+            if self.verbose:
+                import traceback
+                traceback.print_exc()
         
         input("\nPress Enter to continue...")
     

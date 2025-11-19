@@ -4,16 +4,26 @@ A comprehensive, enterprise-grade Python tool for analyzing your organization's 
 
 ## Features
 
-### 🎯 Interactive Menu System (NEW!)
+### 🎯 Interactive Menu System
 - User-friendly command-line interface
 - Visual ASCII art banner
 - Step-by-step workflow guidance
 - Real-time configuration management
 - Progress tracking and status display
 
+### 🏢 Company Domain Discovery (NEW!)
+**Automatically find ALL domains owned by a company:**
+  - **Certificate Transparency** search by organization name
+  - **Common patterns** (company.com, company.net, etc.)
+  - **Regional variations** (company-us.com, eu.company.com)
+  - **Subsidiaries** (company-labs.com, company-ventures.com)
+  - **TLD variations** across 50+ extensions
+  - **DNS verification** to confirm active domains
+  - See [COMPANY_DISCOVERY.md](COMPANY_DISCOVERY.md) for details
+
 ### 🔍 Domain & Subdomain Enumeration
 Automatically discover subdomains using multiple sources:
-  - **Subfinder** (NEW!) - Fast and efficient subdomain discovery
+  - **Subfinder** - Fast and efficient subdomain discovery
   - **Sublist3r** (if installed)
   - **Amass** (if installed)
   - **crt.sh** (Certificate Transparency logs)

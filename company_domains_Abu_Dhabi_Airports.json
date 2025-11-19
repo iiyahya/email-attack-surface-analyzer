@@ -1,0 +1,71 @@
+{
+  "company_name": "Abu Dhabi Airports",
+  "total_domains": 6,
+  "discovery_timestamp": "2025-11-19 09:26:24",
+  "categories": {
+    "primary_domains": [
+      {
+        "domain": "abu.com",
+        "sources": [
+          "Common Pattern"
+        ],
+        "discovery_methods": 1
+      }
+    ],
+    "regional_domains": [],
+    "subsidiary_domains": [],
+    "subdomains": [],
+    "other_domains": [
+      {
+        "domain": "abu.io",
+        "sources": [
+          "Common Pattern"
+        ],
+        "discovery_methods": 1
+      },
+      {
+        "domain": "abu.net",
+        "sources": [
+          "Common Pattern"
+        ],
+        "discovery_methods": 1
+      },
+      {
+        "domain": "ada.com",
+        "sources": [
+          "Common Pattern"
+        ],
+        "discovery_methods": 1
+      },
+      {
+        "domain": "ada.io",
+        "sources": [
+          "Common Pattern"
+        ],
+        "discovery_methods": 1
+      },
+      {
+        "domain": "ada.net",
+        "sources": [
+          "Common Pattern"
+        ],
+        "discovery_methods": 1
+      }
+    ]
+  },
+  "all_domains": [
+    "abu.com",
+    "abu.io",
+    "abu.net",
+    "ada.com",
+    "ada.io",
+    "ada.net"
+  ],
+  "summary": {
+    "primary": 1,
+    "regional": 0,
+    "subsidiaries": 0,
+    "subdomains": 0,
+    "other": 5
+  }
+}
